@@ -1,0 +1,8 @@
+FROM rust:alpine3.17
+
+RUN apk add --update --no-cache \
+  bash \
+  build-base \
+  git
+
+RUN cargo install cargo-watch
