@@ -6,6 +6,7 @@ pub mod repositories;
 pub mod routes;
 pub mod services;
 pub mod utils;
+pub mod models;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

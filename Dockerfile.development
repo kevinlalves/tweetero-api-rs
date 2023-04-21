@@ -3,6 +3,8 @@ FROM rust:alpine3.17
 RUN apk add --update --no-cache \
   bash \
   build-base \
-  git
+  git \
+  libpq-dev
 
 RUN cargo install cargo-watch
+RUN RUSTFLAGS="-C target-feature=-crt-static" cargo install diesel_cli --no-default-features --features postgres
