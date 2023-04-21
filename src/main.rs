@@ -1,17 +1,10 @@
-use actix_web::{App, HttpServer};
+use std::net::TcpListener;
 
-pub mod config;
-pub mod controllers;
-pub mod repositories;
-pub mod routes;
-pub mod services;
-pub mod utils;
-pub mod models;
+use tweetero_api::start_server;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| App::new().configure(routes::app))
-        .bind("0.0.0.0:3000")?
-        .run()
-        .await
+  let listener = TcpListener::bind("0.0.0.0:3000").expect("Failed to bind port 3000");
+
+  start_server(listener)?.await
 }
